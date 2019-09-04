@@ -2,6 +2,7 @@
 //Aug 29, 2019
 //period 4
 //group of methods that perform math calculations (a library)
+
 public class Calculate {
 //square	
 	public static int square(int number) {
