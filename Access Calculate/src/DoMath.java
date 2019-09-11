@@ -20,6 +20,7 @@ public class DoMath {
 		System.out.println(Calculate.isDivisibleBy(20, 10));
 		System.out.println(Calculate.absValue(-12));
 		System.out.println(Calculate.max(-15, -14, 5));
+		//extra comment
 	}
 
 }
