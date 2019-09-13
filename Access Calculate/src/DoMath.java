@@ -19,8 +19,9 @@ public class DoMath {
 		//Part 2
 		System.out.println(Calculate.isDivisibleBy(20, 10));
 		System.out.println(Calculate.absValue(-12));
-		System.out.println(Calculate.max(-15, -14, 5));
-		//extra comment
+		System.out.println(Calculate.max(5, 4, 2));
+		System.out.println(Calculate.min(5,2));
+		System.out.println(Calculate.round2(5.678));
 	}
 
 }

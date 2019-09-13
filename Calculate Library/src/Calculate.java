@@ -38,7 +38,7 @@ public class Calculate {
 //to Radians
 	public static double toRadians(double number) {
 		double answer = 0;
-		answer = number * (180/3.14159);
+		answer = number / (180/3.14159);
 		return answer;
 	}
 //discriminant
@@ -105,20 +105,33 @@ public class Calculate {
 		double max = c;
 		if(a<b) {
 			if(c<b) {
-			max = b;
-			}	
-		}else if(b<c){
-			if(a<c) {
-			max = c;
+				max = b;
 			}
-		}else if(a>b) {
-			if(a>c) {
+		}else if(a>c) {
 			max = a;
-			}
 		}
 		return max;
 	}
-
+//min
+	public static int min(int a, int b) {
+		if(a<b) {
+			return a;
+		}else {
+			return b;
+		}
+		
+	}
+//round2
+	public static double round2(double a) {
+		a = a*100;
+		if(a>50) {
+			
+		}
+		return 3.0;		
+		
+		
+				
+	}
 }
 
 
