@@ -124,14 +124,30 @@ public class Calculate {
 //round2
 	public static double round2(double a) {
 		a = a*100;
-		if(a>50) {
-			
-		}
-		return 3.0;		
-		
-		
-				
+		a= a+0.5;
+		a= (int)a;
+		a= a/100;
+		return a;				
 	}
+
+
+//PART 3
+//exponent
+	public static double exponent(double base, int exp) {
+		double answer = 0;
+		for(int i = 1; i <= exp; i++) {
+			answer=answer* base;
+		}
+		 return answer;				
+	}
+//factorial
+	//public static int factorial(int a) {
+		//double answer = 0;
+		//for(int i=a; i<=1; i++) {
+			//answer = (answer - 1)*answer;
+		//return answer;
+
+	
+
+
 }
-
-
