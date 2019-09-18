@@ -134,20 +134,29 @@ public class Calculate {
 //PART 3
 //exponent
 	public static double exponent(double base, int exp) {
-		double answer = 0;
+		double answer = 1;
 		for(int i = 1; i <= exp; i++) {
 			answer=answer* base;
 		}
 		 return answer;				
 	}
 //factorial
-	//public static int factorial(int a) {
-		//double answer = 0;
-		//for(int i=a; i<=1; i++) {
-			//answer = (answer - 1)*answer;
-		//return answer;
+	public static int factorial(int a) {
+		int answer = 1;
+		for(int i=1; i<=a ; i++) {
+			answer = (i)*answer;
+		}
+		return answer;	
+	}
+//isPrime
+	public static boolean isPrime(int a) {
+		for(int i = 2; i< a; i++) {
+			if(isDivisibleBy(a, i)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	
-
-
 }
