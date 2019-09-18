@@ -100,7 +100,7 @@ public class Calculate {
 			return b;
 		}
 	}
-//max
+//max with 3 numbers
 	public static double max(double a, double b, double c) {
 		double max = c;
 		if(a<b) {
@@ -157,6 +157,25 @@ public class Calculate {
 		}
 		return true;
 	}
+//greatest common factor
+	public static int gcf(int a, int b) {
+		int answer = 1;
+		for(int i = 1; i<=(max(a, b)); i++) {
+			if(isDivisibleBy((int)max(a, b), i)) {
+				if(isDivisibleBy((int)min(a, b), i)) {
+					answer = i;
+				}
+			}
+		}
+		return answer;
+	}
+//square root
+	public static double sqrt(double a) {
+		double answer = 1;
+		
+		return answer;
+	}
+	
 
 	
 }
