@@ -170,12 +170,11 @@ public class Calculate {
 		return answer;
 	}
 //square root
-	public static double sqrt(double a) {
-		double answer = 1;
-		
-		return answer;
-	}
-	
-
-	
+	public static double sqrt(double num) {
+		double answer = num / 2;
+		while((answer*answer) - num >= .005) {
+			answer = (.5*((num/answer)+answer));
+		}	
+	return (round2(answer));
+	}	
 }
