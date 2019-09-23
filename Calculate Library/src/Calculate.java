@@ -137,6 +137,9 @@ public class Calculate {
 		double answer = 1;
 		for(int i = 1; i <= exp; i++) {
 			answer=answer* base;
+			if(exp<0) {
+				answer = 1/(answer*base);
+			}
 		}
 		 return answer;				
 	}
@@ -171,6 +174,7 @@ public class Calculate {
 	}
 //square root
 	public static double sqrt(double num) {
+		if(num<0)throw new IllegalArgumentException("can't square root a negative number");
 		double answer = num / 2;
 		while((answer*answer) - num >= .005) {
 			answer = (.5*((num/answer)+answer));
