@@ -78,6 +78,7 @@ public class Calculate {
 //PART 2
 //is Divisible By
 	public static boolean isDivisibleBy(int a, int b) {
+		if(b==0)throw new IllegalArgumentException("can't divide a number by 0");
 		if(a%b == 0) {
 			return true;
 		}else{
@@ -135,16 +136,18 @@ public class Calculate {
 //exponent
 	public static double exponent(double base, int exp) {
 		double answer = 1;
-		for(int i = 1; i <= exp; i++) {
+		for(int i = 1; i <= absValue(exp); i++) {
 			answer=answer* base;
-			if(exp<0) {
-				answer = 1/(answer*base);
-			}
 		}
-		 return answer;				
+		if(exp<0) {
+			return(1/answer);
+		}else {
+		return answer; 
+		}
 	}
 //factorial
 	public static int factorial(int a) {
+		if(a<0)throw new IllegalArgumentException("can't find a factorial of a negative number");
 		int answer = 1;
 		for(int i=1; i<=a ; i++) {
 			answer = (i)*answer;
@@ -181,4 +184,18 @@ public class Calculate {
 		}	
 	return (round2(answer));
 	}	
+
+//PART 4	
+//Quadratic Formula
+	public static String quadForm(double a, double b, double c) {
+		double root1 = 1;
+		double root2 = 1;
+		if(discriminant(a, b, c)>0) {
+			root1 = ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);
+			root2 = ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a);
+			
+		}
+		return (root1 + " and " + root2);
+	}
+
 }
