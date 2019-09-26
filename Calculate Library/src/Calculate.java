@@ -188,14 +188,20 @@ public class Calculate {
 //PART 4	
 //Quadratic Formula
 	public static String quadForm(double a, double b, double c) {
-		double root1 = 1;
-		double root2 = 1;
+		String twoRoots = "";
+		String oneRoot = "";
+		String noRoots = "";
 		if(discriminant(a, b, c)>0) {
-			root1 = ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);
-			root2 = ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a);
-			
+			twoRoots += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a) + " and ";
+			twoRoots += ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a);
+			return twoRoots;
+		}else if(discriminant(a,b,c)==0) {
+			oneRoot +=(-1*b)/(2*a);
+			return oneRoot;
+		}else if(discriminant(a,b,c)<0) {
+			noRoots ="no real roots";
+			return noRoots;
 		}
-		return (root1 + " and " + root2);
+		return twoRoots;
 	}
-
 }
