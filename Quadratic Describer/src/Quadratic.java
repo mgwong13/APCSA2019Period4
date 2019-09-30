@@ -1,11 +1,21 @@
 
 public class Quadratic {
 		public static String quadrDescriber(double a, double b, double c) {
-			String descriptions = "";
-			descriptions += "Description of the Graph: \n";
-			descriptions += "y= " + a;
-			return descriptions;
+			String description = "";
+			
+			description += "Description of the Graph: \n";
+			description+= "y= " + a+"x^2 +"+b+" x + "+c + "\n";
+			description+= "Opens;";
+			if (a<0) {
+				description+="down";
+			}else {
+				description+="up";
+			}
+			description += "\n" + "Axis of Symmetry: " + (-1*b)/(2*a);
+			description += "("  + (-1*b)/(2*a);
+			return description; 
 		}
+			
 	//square	
 		public static int square(int number) {
 			int answer = 0;
@@ -207,4 +217,4 @@ public class Quadratic {
 			return twoRoots;
 			}
 		}
-}
+
