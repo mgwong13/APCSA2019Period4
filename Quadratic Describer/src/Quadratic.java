@@ -5,14 +5,16 @@ public class Quadratic {
 			
 			description += "Description of the Graph: \n";
 			description+= "y= " + a+"x^2 +"+b+" x + "+c + "\n";
-			description+= "Opens;";
+			description+= "Opens:";
 			if (a<0) {
 				description+="down";
 			}else {
 				description+="up";
 			}
-			description += "\n" + "Axis of Symmetry: " + (-1*b)/(2*a);
-			description += "("  + (-1*b)/(2*a);
+			description += "\n" + "Axis of Symmetry: " + (-1*b)/(2*a) + "\n";
+			description += "Vertex: ("  + (-1*b)/(2*a)+"," + (a*(-b / 2*a)*(-b / 2*a))+ b*(-b / 2*a) + c+") \n";
+			description += "x intercept(s): " + quadForm(a,b,c)+"\n";
+			description += "y intercept :" + c;
 			return description; 
 		}
 			

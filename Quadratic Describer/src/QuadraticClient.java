@@ -3,10 +3,10 @@ public class QuadraticClient {
 
 	public static void main(String[] args) {
 		Scanner userInput = new Scanner(System.in);	
-		//set up welcome
+		System.out.println("Welcome to Quadratic Describer");
+		System.out.println("Provide values for coefficients a, b, and c");
 		
 		while (!userInput.equals("quit")) {
-		}
 		System.out.println("a: ");
 		double a =userInput.nextDouble();
 		System.out.println("b: ");
@@ -16,9 +16,10 @@ public class QuadraticClient {
 		
 		System.out.println(Quadratic.quadrDescriber(a,b,c));
 		
-		System.out.println("Do you want to keep going? (type \"quit\" to end ");
+		System.out.println("Do you want to keep going? (type \"quit\" to end)");
 		userInput.nextLine();
 		
-	}
+		}
 
+	}
 }
