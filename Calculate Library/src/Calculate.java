@@ -70,7 +70,7 @@ public class Calculate {
 		String polynomial="";
 	
 		polynomial += a*c +var+"^2 + ";
-		polynomial += (a*d)+(b*c) +var+ "+ ";
+		polynomial += (a*d)+(b*c) +var+ " + ";
 		polynomial += b*d;
 		return polynomial;
 	}
@@ -124,17 +124,26 @@ public class Calculate {
 	}
 //round2
 	public static double round2(double a) {
-		a = a*100;
-		a= a+0.5;
-		a= (int)a;
-		a= a/100;
-		return a;				
+		if(a>0) {
+			a = a*100;
+			a= a+0.5;
+			a= (int)a;
+			a= a/100;
+		return a;	
+		}else {
+			a = a*100;
+			a= a-0.5;
+			a= (int)a;
+			a= a/100;
+			return a;	
+		}
 	}
 
 
 //PART 3
 //exponent
 	public static double exponent(double base, int exp) {
+		if(base == 0 & exp == 0)throw new IllegalArgumentException("doesn't exist");
 		double answer = 1;
 		for(int i = 1; i <= absValue(exp); i++) {
 			answer=answer* base;
@@ -178,7 +187,7 @@ public class Calculate {
 //square root
 	public static double sqrt(double num) {
 		if(num<0)throw new IllegalArgumentException("can't square root a negative number");
-		double answer = num / 2;
+		double answer = num;
 		while((answer*answer) - num >= .005) {
 			answer = (.5*((num/answer)+answer));
 		}	
@@ -192,8 +201,8 @@ public class Calculate {
 		String oneRoot = "";
 		String noRoots = "";
 		if(discriminant(a, b, c)>0) {
-			twoRoots += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a) + " and ";
-			twoRoots += ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a);
+			twoRoots += ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a)+ " and ";
+			twoRoots += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);	
 			return twoRoots;
 		}else if(discriminant(a,b,c)==0) {
 			oneRoot +=(-1*b)/(2*a);
