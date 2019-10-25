@@ -37,20 +37,34 @@ public class Split {
 		System.out.println(Arrays.toString(outputArray3));
 		String[] outputArray4 = "really I really like really red apples!".split("really");
 		System.out.println(Arrays.toString(outputArray4));
+		System.out.println(part1("bread"));
+		System.out.println(part1("breadham"));
+		System.out.println(part1("mayobread"));
+		System.out.println(part1("breadmayobread"));
+		System.out.println(part1("breadbread"));
+		System.out.println(part1("breadmayobreadham"));
+		System.out.println(part1("applespinapplesbreadlettucetomatobaconmayohambreadcheese"));
 	}
 		//Your task Part 1:
-	/*public static String partOne(String sandwich){
-		String[] part = sandwich.split(sandwich.substring(0, sandwich.indexOf("bread")+1));
-		String[] part2 = sandwich.split(sandwich.substring(sandwich.indexOf("bread")+1, sandwich.indexOf("bread")));
-		
-		System.out.println(partOne("bread"));
-		System.out.println(partOne("breadham"));
-		System.out.println(partOne("mayobread"));
-		System.out.println(partOne("breadmayobread"));
-		System.out.println(partOne("breadbread"));
-		System.out.println(partOne("breadmayobreadham"));
-		System.out.println(partOne("applespinapplesbreadlettucetomatobaconmayohambreadcheese"));
+	public static String part1(String sandwich){
+		String[] pieces = sandwich.split("bread");
+		if(sandwich.indexOf("bread")>=0) {
+			int bread1 = sandwich.indexOf("bread");
+			String bread12 = sandwich.substring(bread1+1);
+			if(bread12.indexOf("bread")>=0){
+				if(pieces.length<=1) {
+					return "not a sandwich";
+				}else{
+					return pieces[1];
+				}
+			}else {
+				return"not a sandwich";
+			}
+		}else {
+			return"not a sandwich";
 		}
+	
+
 	}
 		/*Write a method that take in a string like
 
@@ -81,8 +95,8 @@ public class Split {
 		* Again, what if it's a fancy sandwich with multiple pieces of bread?
 
 		*/
+	
 }
-
 		
 
 
