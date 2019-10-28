@@ -1,3 +1,6 @@
+//Marina Wong
+//this program scans numbers and tells you max min sums, etc.
+
 import java.util.*;
 public class ProcessingNumbers {
 
@@ -27,8 +30,11 @@ public class ProcessingNumbers {
 			if(scannedNum < min) {
 				min = scannedNum;
 			}		
-			if(scannedNum %2 ==0) {
+			if(scannedNum %2 ==0 ) {
+				if(value%2 ==0)
+				sum = value;
 				sum+=scannedNum;
+				
 				if(evenfound == false) {
 					evenmax = scannedNum;
 				}
@@ -49,3 +55,8 @@ public class ProcessingNumbers {
 		}
 	}
 }
+			
+	
+
+
+
