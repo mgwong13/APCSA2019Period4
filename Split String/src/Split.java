@@ -37,6 +37,7 @@ public class Split {
 		System.out.println(Arrays.toString(outputArray3));
 		String[] outputArray4 = "really I really like really red apples!".split("really");
 		System.out.println(Arrays.toString(outputArray4));
+		System.out.println("Part 1");
 		System.out.println(part1("bread"));
 		System.out.println(part1("breadham"));
 		System.out.println(part1("mayobread"));
@@ -44,6 +45,8 @@ public class Split {
 		System.out.println(part1("breadbread"));
 		System.out.println(part1("breadmayobreadham"));
 		System.out.println(part1("applespinapplesbreadlettucetomatobaconmayohambreadcheese"));
+		System.out.println("Part 2");
+		System.out.println(part2("apples pinapples bread lettuce tomato bacon mayo ham bread cheese"));
 	}
 		//Your task Part 1:
 	public static String part1(String sandwich){
@@ -66,6 +69,18 @@ public class Split {
 	
 
 	}
+		
+	public static String part2(String sandwich) {
+		String output = "";
+		String[] nospaces = sandwich.split(" ");
+		for(int i=1; i < nospaces.length; i++) {
+			output+=nospaces[i];
+		}
+		return part1(output);
+	}
+	
+	
+	
 		/*Write a method that take in a string like
 
 		* "applespineapplesbreadlettucetomatobaconmayohambreadcheese"
