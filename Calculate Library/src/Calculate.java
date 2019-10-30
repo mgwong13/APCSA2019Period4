@@ -86,7 +86,7 @@ public class Calculate {
 		}
 	}
 //Absolute Value
-	public static double absValue(int a) {
+	public static double absValue(double a) {
 		if(a >= 0) {
 			return a;
 		}else{
@@ -94,7 +94,7 @@ public class Calculate {
 		}	
 	}
 //max
-	public static double max(int a, int b) {
+	public static double max(double a, double b) {
 		if(a>b) {
 			return a;
 		}else {
