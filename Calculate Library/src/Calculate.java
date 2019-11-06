@@ -30,15 +30,15 @@ public class Calculate {
 		return answer;
 	}
 //to Degrees
-	public static double toDegrees(double number) {
+	public static double toDegrees(double radian) {
 		double answer = 0;
-		answer = (180/3.14159) * number;
+		answer = (180/3.14159) * radian;
 		return answer;
 	}
 //to Radians
-	public static double toRadians(double number) {
+	public static double toRadians(double degree) {
 		double answer = 0;
-		answer = number / (180/3.14159);
+		answer = degree / (180/3.14159);
 		return answer;
 	}
 //discriminant
@@ -48,22 +48,18 @@ public class Calculate {
 		return answer;
 	}
 //Improper Fractions
-	public static String toImproperFrac(int a, int b, int c) {
-		int num = 0;
-		int denom = 0;
-		num = (a*c) + b;
-		denom = c;
-		return(num + "/" + denom) ;
+	public static String toImproperFrac(int whole, int num, int denom) {
+		int num1 = 0;
+		num1 = (whole*denom) + num;
+		return(num1 + "/" + denom) ;
 	}
 //Mixed Number
-	public static String toMixedNum(int a, int b) {
+	public static String toMixedNum(int num, int denom) {
 		int wholenum = 0;
-		int num = 0;
-		int denom = 0;
-		wholenum = a/b;
-		num = a%b;
-		denom = b;
-		return(wholenum + " " + num +"/" +denom);
+		int num1 = 0;
+		wholenum = num/denom;
+		num1 = num%denom;
+		return(wholenum + " " + num1 +"/" +denom);
 	}
 //foil
 	public static String foil(int a, int b, int c, int d, String var) {
@@ -77,66 +73,62 @@ public class Calculate {
 
 //PART 2
 //is Divisible By
-	public static boolean isDivisibleBy(int a, int b) {
-		if(b==0)throw new IllegalArgumentException("can't divide a number by 0");
-		if(a%b == 0) {
+	public static boolean isDivisibleBy(int num1, int num2) {
+		if(num2==0)throw new IllegalArgumentException("can't divide a number by 0");
+		if(num1%num2 == 0) {
 			return true;
 		}else{
 			return false;
 		}
 	}
 //Absolute Value
-	public static double absValue(double a) {
-		if(a >= 0) {
-			return a;
+	public static double absValue(double num) {
+		if(num >= 0) {
+			return num;
 		}else{
-			return(-1*a);
+			return(-1*num);
 		}	
 	}
 //max
-	public static double max(double a, double b) {
-		if(a>b) {
-			return a;
+	public static double max(double num1, double num2) {
+		if(num1>num2) {
+			return num1;
 		}else {
-			return b;
+			return num2;
 		}
 	}
 //max with 3 numbers
-	public static double max(double a, double b, double c) {
-		double max = c;
-		if(a<b) {
-			if(c<b) {
-				max = b;
+	public static double max(double num1, double num2, double num3) {
+		double max = num3;
+		if(num1<num2) {
+			if(num3<num2) {
+				max = num2;
 			}
-		}else if(a>c) {
-			max = a;
+		}else if(num1>num2) {
+			max = num1;
 		}
 		return max;
 	}
 //min
-	public static int min(int a, int b) {
-		if(a<b) {
-			return a;
+	public static int min(int num1, int num2) {
+		if(num1<num2) {
+			return num1;
 		}else {
-			return b;
+			return num2;
 		}
 		
 	}
 //round2
-	public static double round2(double a) {
-		if(a>0) {
-			a = a*100;
-			a= a+0.5;
-			a= (int)a;
-			a= a/100;
-		return a;	
+	public static double round2(double num) {
+		num = num*100;
+		if(num>0) {
+			num= num+0.5;
 		}else {
-			a = a*100;
-			a= a-0.5;
-			a= (int)a;
-			a= a/100;
-			return a;	
+			num= num-0.5;
 		}
+		num= (int)num;
+		num= num/100;
+		return num;
 	}
 
 
@@ -155,29 +147,29 @@ public class Calculate {
 		}
 	}
 //factorial
-	public static int factorial(int a) {
-		if(a<0)throw new IllegalArgumentException("can't find a factorial of a negative number");
+	public static int factorial(int num) {
+		if(num<0)throw new IllegalArgumentException("can't find a factorial of a negative number");
 		int answer = 1;
-		for(int i=1; i<=a ; i++) {
+		for(int i=1; i<=num ; i++) {
 			answer = (i)*answer;
 		}
 		return answer;	
 	}
 //isPrime
-	public static boolean isPrime(int a) {
-		for(int i = 2; i< a; i++) {
-			if(isDivisibleBy(a, i)) {
+	public static boolean isPrime(int num) {
+		for(int i = 2; i< num; i++) {
+			if(isDivisibleBy(num, i)) {
 				return false;
 			}
 		}
 		return true;
 	}
 //greatest common factor
-	public static int gcf(int a, int b) {
+	public static int gcf(int num1, int num2) {
 		int answer = 1;
-		for(int i = 1; i<=(max(a, b)); i++) {
-			if(isDivisibleBy((int)max(a, b), i)) {
-				if(isDivisibleBy((int)min(a, b), i)) {
+		for(int i = 1; i<=(max(num1, num2)); i++) {
+			if(isDivisibleBy((int)max(num1, num2), i)) {
+				if(isDivisibleBy((int)min(num1, num2), i)) {
 					answer = i;
 				}
 			}
@@ -196,21 +188,17 @@ public class Calculate {
 
 //PART 4	
 //Quadratic Formula
-	public static String quadForm(double a, double b, double c) {
-		String twoRoots = "";
-		String oneRoot = "";
-		String noRoots = "";
+	public static String quadForm(int a, int b, int c) {
+		String root = "no real roots";
+		
 		if(discriminant(a, b, c)>0) {
-			twoRoots += ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a)+ " and ";
-			twoRoots += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);	
-			return twoRoots;
+			root = ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a)+ " and ";
+			root += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);	
+			
 		}else if(discriminant(a,b,c)==0) {
-			oneRoot +=(-1*b)/(2*a);
-			return oneRoot;
-		}else if(discriminant(a,b,c)<0) {
-			noRoots ="no real roots";
-			return noRoots;
+			root = ""+(-1*b)/(2*a);
+			
 		}
-		return twoRoots;
+		return root;
 	}
 }
