@@ -29,46 +29,43 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
     	String[] outputArray = input.split(" ");
     	String val1 = outputArray[0];
-    	String operand = outputArray[1];
+    	String operator = outputArray[1];
     	String val2 = outputArray[2];
-    	
+    	int[] val1Ints= {0,0,1};
+    	int[] val2Ints = {0,0,1};
     	if(val1.indexOf("_")>-1) {
     		String[] val1Whole = val1.split("_");
-    		String val1whole = val1Whole[0];
+    		val1Ints[0] = Integer.parseInt(val1Whole[0]);
     		String[] val1frac = val1Whole[1].split("/");
-    		String val1num =  val1frac[0];
-    		String val1denom =  val1frac[1];
-    	}else if(val2.indexOf("_")<0 && val2.indexOf("/")<0) {
-    		String val1whole = val1;
+    		int val1num = Integer.parseInt(val1frac[0]);
+    		int val1denom =  Integer.parseInt(val1frac[1]);
+    		
+    	}else if(val1.indexOf("_")<0 && val2.indexOf("/")<0) {
+    		val1Ints[1]= Integer.parseInt(val1);
+    		
     	}else {
     		String[] val1frac = val1.split("/");
-    		String val1num =  val1frac[0];
-    		String val2denom =  val1frac[1];
+    		int val1num =  Integer.parseInt(val1frac[0]);
+    		int val2denom =  Integer.parseInt(val1frac[1]);
     	}
     	if(val2.indexOf("_")>-1) {
     		String[] val2Whole = val2.split("_");
-    		String val2whole = val2Whole[0];
+    		int val2whole = Integer.parseInt(val2Whole[0]);
     		String[] val2frac = val2Whole[1].split("/");
-    		String val2num =  val2frac[0];
-    		String val2denom =  val2frac[1];
+    		int val2num =  Integer.parseInt(val2frac[0]);
+    		
+    		int val2denom =  Integer.parseInt(val2frac[1]);
+    		int val2numer = (val2whole*val2denom)+val2num;
     	}else if(val2.indexOf("_")<0 && val2.indexOf("/")<0) {
-    		String val2whole = val2;
+    		int val2numer = Integer.parseInt(val2);
+    		int val2denom = 1;
+    		
     	}else {
     		String[] val2frac = val2.split("/");
-    		String val2num =  val2frac[0];
-    		String val2denom =  val2frac[1];
+    		int val2num =  Integer.parseInt(val2frac[0]);
+    		int val2denom =  Integer.parseInt(val2frac[1]);
     	}
-    	return "";
     }
-    
-  //Improper Fractions
-  	public static String toImproperFrac(int a, int b, int c) {
-  		int num = 0;
-  		int denom = 0;
-  		num = (a*c) + b;
-  		denom = c;
-  		return(num + "/" + denom) ;
-  	}
     // TODO: Fill in the space below with any helper methods that you think you will need
     
 }
