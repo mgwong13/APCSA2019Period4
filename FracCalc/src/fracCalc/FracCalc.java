@@ -31,41 +31,59 @@ public class FracCalc {
     	String val1 = outputArray[0];
     	String operator = outputArray[1];
     	String val2 = outputArray[2];
-    	int[] val1Ints= {0,0,1};
-    	int[] val2Ints = {0,0,1};
-    	if(val1.indexOf("_")>-1) {
+    	int[] val1Ints= {0,1};
+    	int[] val2Ints = {0,1};
+    	int numerator = 0;
+    	int denominator = 1;
+    			
+    	if(val1.contains("_")) {
     		String[] val1Whole = val1.split("_");
-    		val1Ints[0] = Integer.parseInt(val1Whole[0]);
+    		int val1whole = Integer.parseInt(val1Whole[0]);
     		String[] val1frac = val1Whole[1].split("/");
-    		int val1num = Integer.parseInt(val1frac[0]);
-    		int val1denom =  Integer.parseInt(val1frac[1]);
-    		
-    	}else if(val1.indexOf("_")<0 && val2.indexOf("/")<0) {
-    		val1Ints[1]= Integer.parseInt(val1);
-    		
+    		val1Ints[0] = (val1whole*Integer.parseInt(val1frac[1])) + Integer.parseInt(val1frac[0]);
+    		val1Ints[1] =  Integer.parseInt(val1frac[1]);
+    	
+    	}else if (!(val1.contains("_") || (val1.contains("/")))) {
+    		val1Ints[0]= Integer.parseInt(val1);
+        		
     	}else {
     		String[] val1frac = val1.split("/");
-    		int val1num =  Integer.parseInt(val1frac[0]);
-    		int val2denom =  Integer.parseInt(val1frac[1]);
-    	}
+    		val1Ints[0] =  Integer.parseInt(val1frac[0]);
+    		val1Ints[1] =  Integer.parseInt(val1frac[1]);
+     	}
     	if(val2.indexOf("_")>-1) {
     		String[] val2Whole = val2.split("_");
     		int val2whole = Integer.parseInt(val2Whole[0]);
     		String[] val2frac = val2Whole[1].split("/");
-    		int val2num =  Integer.parseInt(val2frac[0]);
-    		
-    		int val2denom =  Integer.parseInt(val2frac[1]);
-    		int val2numer = (val2whole*val2denom)+val2num;
-    	}else if(val2.indexOf("_")<0 && val2.indexOf("/")<0) {
-    		int val2numer = Integer.parseInt(val2);
-    		int val2denom = 1;
+    		val2Ints[0] = (val2whole*Integer.parseInt(val2frac[1])) + Integer.parseInt(val2frac[0]);
+    		val2Ints[1] =  Integer.parseInt(val2frac[1]);
+    	}else if(!(val2.contains("_") || (val2.contains("/")))) {
+    		val2Ints[0]= Integer.parseInt(val2);
     		
     	}else {
     		String[] val2frac = val2.split("/");
-    		int val2num =  Integer.parseInt(val2frac[0]);
-    		int val2denom =  Integer.parseInt(val2frac[1]);
+    		val2Ints[0]=  Integer.parseInt(val2frac[0]);
+    		val2Ints[1]=  Integer.parseInt(val2frac[1]);
     	}
+    	if(operator.equals("+")) {
+    		numerator = ((val1Ints[0]*val2Ints[1]) + (val2Ints[0]*val1Ints[1]));
+    		denominator = (val1Ints[1]*val2Ints[1]);
+     	}
+    	if(operator.equals("-")){
+    		numerator = ((val1Ints[0]*val2Ints[1]) - (val2Ints[0]*val1Ints[1]));
+    		denominator = (val1Ints[1]*val2Ints[1]);
+    	}
+    	if(operator.equals("*")){
+    		numerator = val1Ints[0]*val2Ints[0];
+    		denominator = val2Ints[1]*val2Ints[2];
+    	}
+    	if(operator.equals("/")) {
+    		numerator = (val1Ints[0]*val2Ints[1]);
+    		denominator = (val1Ints[1]*val2Ints[0]);
+    	}
+    	return numerator + "/" + denominator;
     }
+    
     // TODO: Fill in the space below with any helper methods that you think you will need
     
 }
