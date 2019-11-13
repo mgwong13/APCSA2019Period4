@@ -13,8 +13,6 @@ public class FracCalc {
     	System.out.println("Do you want to keep going? (type \"quit\" to end)");
 		scan.nextLine();
     	}
-    	
-  
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -28,60 +26,54 @@ public class FracCalc {
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] outputArray = input.split(" ");
-    	String val1 = outputArray[0];
     	String operator = outputArray[1];
-    	String val2 = outputArray[2];
-    	int[] val1Ints= {0,1};
-    	int[] val2Ints = {0,1};
-    	int numerator = 0;
-    	int denominator = 1;
-    			
-    	if(val1.contains("_")) {
-    		String[] val1Whole = val1.split("_");
-    		int val1whole = Integer.parseInt(val1Whole[0]);
-    		String[] val1frac = val1Whole[1].split("/");
-    		val1Ints[0] = (val1whole*Integer.parseInt(val1frac[1])) + Integer.parseInt(val1frac[0]);
-    		val1Ints[1] =  Integer.parseInt(val1frac[1]);
-    	
-    	}else if (!(val1.contains("_") || (val1.contains("/")))) {
-    		val1Ints[0]= Integer.parseInt(val1);
-        		
-    	}else {
-    		String[] val1frac = val1.split("/");
-    		val1Ints[0] =  Integer.parseInt(val1frac[0]);
-    		val1Ints[1] =  Integer.parseInt(val1frac[1]);
-     	}
-    	if(val2.indexOf("_")>-1) {
-    		String[] val2Whole = val2.split("_");
-    		int val2whole = Integer.parseInt(val2Whole[0]);
-    		String[] val2frac = val2Whole[1].split("/");
-    		val2Ints[0] = (val2whole*Integer.parseInt(val2frac[1])) + Integer.parseInt(val2frac[0]);
-    		val2Ints[1] =  Integer.parseInt(val2frac[1]);
-    	}else if(!(val2.contains("_") || (val2.contains("/")))) {
-    		val2Ints[0]= Integer.parseInt(val2);
-    		
-    	}else {
-    		String[] val2frac = val2.split("/");
-    		val2Ints[0]=  Integer.parseInt(val2frac[0]);
-    		val2Ints[1]=  Integer.parseInt(val2frac[1]);
-    	}
+    	int[] val1Ints= initializing(outputArray[0]);
+    	int[] val2Ints = initializing(outputArray[2]);
+    	int[] answer = {0,0,1};
+    
     	if(operator.equals("+")) {
-    		numerator = ((val1Ints[0]*val2Ints[1]) + (val2Ints[0]*val1Ints[1]));
-    		denominator = (val1Ints[1]*val2Ints[1]);
+    		answer[1] = ((val1Ints[1]*val2Ints[2])+(val2Ints[1]*val1Ints[2]));
+    		answer[2] = (val1Ints[2]*val2Ints[2]);
      	}
     	if(operator.equals("-")){
-    		numerator = ((val1Ints[0]*val2Ints[1]) - (val2Ints[0]*val1Ints[1]));
-    		denominator = (val1Ints[1]*val2Ints[1]);
+    		answer[1] = ((val1Ints[1]*val2Ints[2])-(val2Ints[1]*val1Ints[2]));
+    		answer[2] = (val1Ints[2]*val2Ints[2]);
     	}
     	if(operator.equals("*")){
-    		numerator = val1Ints[0]*val2Ints[0];
-    		denominator = val2Ints[1]*val2Ints[2];
+    		answer[1] = val1Ints[1]*val2Ints[1];
+    		answer[2] = val1Ints[2]*val2Ints[2];
     	}
     	if(operator.equals("/")) {
-    		numerator = (val1Ints[0]*val2Ints[1]);
-    		denominator = (val1Ints[1]*val2Ints[0]);
+    		answer[1] = (val1Ints[1]*val2Ints[2]);
+    		answer[2] = (val1Ints[2]*val2Ints[1]);
     	}
-    	return numerator + "/" + denominator;
+    	return answer[1] + "/" + answer[2];
+    }
+    
+    public static int[] initializing(String input) {
+    	int[] value= {0,0,1};
+    			
+    	if(input.contains("_")) {
+    		String[] val1Whole = input.split("_");
+    		int val1whole = Integer.parseInt(val1Whole[0]);
+    		String[] val1frac = val1Whole[1].split("/");
+    		if(val1whole>0) {
+    			value[1] = (val1whole*Integer.parseInt(val1frac[1])) + Integer.parseInt(val1frac[0]);
+    			value[2] =  Integer.parseInt(val1frac[1]);
+    		}else {
+    			value[1] = -1*(Math.abs(val1whole)*Integer.parseInt(val1frac[1]) + Integer.parseInt(val1frac[0]));
+        		value[2] =  Integer.parseInt(val1frac[1]);
+    		}
+    	
+    	}else if (!(input.contains("_") || (input.contains("/")))) {
+    		value[1] = Integer.parseInt(input);
+        		
+    	}else {
+    		String[] val1frac = input.split("/");
+    		value[1] =  Integer.parseInt(val1frac[0]);
+    		value[2] =  Integer.parseInt(val1frac[1]);
+     	}
+    	return value;
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
