@@ -6,23 +6,11 @@ public class FracCalc {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner scan = new Scanner(System.in);
     	while (!scan.equals("quit")) {
-    	System.out.println("What is your expression?");
+     	System.out.println("What's your expression? (type \"quit\" to end)");
     	String expression = scan.nextLine();
     	System.out.println(produceAnswer(expression));
-    	
-    	System.out.println("Do you want to keep going? (type \"quit\" to end)");
-		scan.nextLine();
     	}
-    }
-    
-    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-    // This function takes a String 'input' and produces the result
-    //
-    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-    //      e.g. input ==> "1/2 + 3/4"
-    //        
-    // The function should return the result of the fraction after it has been calculated
-    //      e.g. return ==> "1_1/4"
+    }   
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] outputArray = input.split(" ");
@@ -30,7 +18,6 @@ public class FracCalc {
     	int[] val1Ints= initializing(outputArray[0]);
     	int[] val2Ints = initializing(outputArray[2]);
     	int[] answer = {0,0,1};
-    
     	if(operator.equals("+")) {
     		answer[1] = ((val1Ints[1]*val2Ints[2])+(val2Ints[1]*val1Ints[2]));
     		answer[2] = (val1Ints[2]*val2Ints[2]);
@@ -47,9 +34,17 @@ public class FracCalc {
     		answer[1] = (val1Ints[1]*val2Ints[2]);
     		answer[2] = (val1Ints[2]*val2Ints[1]);
     	}
-    	return answer[1] + "/" + answer[2];
+    	if(answer[1]>answer[2]) {
+    	}
+    	int greatestcf = gcf(answer[1], answer[2]);
+    	if(answer[0]==0) {
+    		return answer[1] + "/" + answer[2];
+    	}else {
+    	   	
+    		return answer[0]+"_"+ answer[1] + "/" + answer[2];
+    	}
     }
-    
+    // TODO: Fill in the space below with any helper methods that you think you will need  
     public static int[] initializing(String input) {
     	int[] value= {0,0,1};
     			
@@ -64,7 +59,6 @@ public class FracCalc {
     			value[1] = -1*(Math.abs(val1whole)*Integer.parseInt(val1frac[1]) + Integer.parseInt(val1frac[0]));
         		value[2] =  Integer.parseInt(val1frac[1]);
     		}
-    	
     	}else if (!(input.contains("_") || (input.contains("/")))) {
     		value[1] = Integer.parseInt(input);
         		
@@ -75,9 +69,50 @@ public class FracCalc {
      	}
     	return value;
     }
-    
-    // TODO: Fill in the space below with any helper methods that you think you will need
-    
+  //is Divisible By
+  	public static boolean isDivisibleBy(int num1, int num2) {
+  		if(num2==0)throw new IllegalArgumentException("can't divide a number by 0");
+  		if(num1%num2 == 0) {
+  			return true;
+  		}else{
+  			return false;
+  		}
+  	}
+  //max
+  	public static double max(double num1, double num2) {
+  		if(num1>num2) {
+  			return num1;
+  		}else {
+  			return num2;
+  		}
+  	}
+  //min
+  	public static int min(int num1, int num2) {
+  		if(num1<num2) {
+  			return num1;
+  		}else {
+  			return num2;
+  		}
+  		
+  	}
+    public static int gcf(int num1, int num2) {
+		int answer = 1;
+		for(int i = 1; i<=(max(num1, num2)); i++) {
+			if(isDivisibleBy((int)max(num1, num2), i)) {
+				if(isDivisibleBy((int)min(num1, num2), i)) {
+					answer = i;
+				}
+			}
+		}
+		return answer;
+	}
+    public static int toMixedNum(int num, int denom) {
+		int wholenum = 0;
+		int num1 = 0;
+		wholenum = num/denom;
+		num1 = num%denom;
+		return(wholenum + num1 + +denom);
+	}
 }
 
 
