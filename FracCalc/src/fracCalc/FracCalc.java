@@ -35,13 +35,18 @@ public class FracCalc {
     		answer[2] = (val1Ints[2]*val2Ints[1]);
     	}
     	if(answer[1]>answer[2]) {
+    			answer[0] = toMixedNumWhole(answer[1], answer[2]);
+    			answer[1] = toMixedNumNum(answer[1], answer[2]);
     	}
     	int greatestcf = gcf(answer[1], answer[2]);
-    	if(answer[0]==0) {
-    		return answer[1] + "/" + answer[2];
+    	if(answer[0]==0 && answer[1]==0) {
+    		return 0 +"";
+    	}else if(answer[2]!=1){
+    		return answer[0]+"_"+ Math.abs(answer[1])/greatestcf + "/" + Math.abs(answer[2])/greatestcf;
+    	}else if(answer[0]==0 && answer[1]<answer[2]) {	
+    		return answer[1]/greatestcf + "/" + answer[2]/greatestcf;
     	}else {
-    	   	
-    		return answer[0]+"_"+ answer[1] + "/" + answer[2];
+    		return answer[0] + "";
     	}
     }
     // TODO: Fill in the space below with any helper methods that you think you will need  
@@ -106,12 +111,15 @@ public class FracCalc {
 		}
 		return answer;
 	}
-    public static int toMixedNum(int num, int denom) {
+    public static int toMixedNumWhole(int num, int denom) {
 		int wholenum = 0;
-		int num1 = 0;
 		wholenum = num/denom;
+		return(wholenum);
+	}
+    public static int toMixedNumNum(int num, int denom) {
+		int num1 = 0;
 		num1 = num%denom;
-		return(wholenum + num1 + +denom);
+		return(num1);
 	}
 }
 
