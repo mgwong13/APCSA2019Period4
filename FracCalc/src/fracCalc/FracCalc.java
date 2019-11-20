@@ -5,12 +5,10 @@ public class FracCalc {
     public static void main(String[] args) {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner scan = new Scanner(System.in);
-    	while (!scan.equals("quit")) {
      	System.out.println("What's your expression? (type \"quit\" to end)");
     	String expression = scan.nextLine();
     	System.out.println(produceAnswer(expression));
-    	}
-    }   
+    }  
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] outputArray = input.split(" ");
@@ -34,17 +32,20 @@ public class FracCalc {
     		answer[1] = (val1Ints[1]*val2Ints[2]);
     		answer[2] = (val1Ints[2]*val2Ints[1]);
     	}
-    	if(answer[1]>answer[2]) {
+    	if(Math.abs(answer[1])>answer[2]) {
     			answer[0] = toMixedNumWhole(answer[1], answer[2]);
     			answer[1] = toMixedNumNum(answer[1], answer[2]);
     	}
     	int greatestcf = gcf(answer[1], answer[2]);
+    	
     	if(answer[0]==0 && answer[1]==0) {
     		return 0 +"";
-    	}else if(answer[2]!=1){
+    	}else if(answer[2]!=1 && answer[1]!=0 && answer[0] !=0){
     		return answer[0]+"_"+ Math.abs(answer[1])/greatestcf + "/" + Math.abs(answer[2])/greatestcf;
-    	}else if(answer[0]==0 && answer[1]<answer[2]) {	
+    	}else if(answer[0]==0 && Math.abs(answer[1])<answer[2] && answer[2] !=1) {	
     		return answer[1]/greatestcf + "/" + answer[2]/greatestcf;
+    	}else if(answer[2]==answer[1]) {
+    		return 1 +"";
     	}else {
     		return answer[0] + "";
     	}
