@@ -59,7 +59,7 @@ public class Calculate {
 		int num1 = 0;
 		wholenum = num/denom;
 		num1 = num%denom;
-		return(wholenum + " " + num1 +"/" +denom);
+		return(wholenum + "_" + num1 +"/" +denom);
 	}
 //foil
 	public static String foil(int a, int b, int c, int d, String var) {
@@ -192,9 +192,8 @@ public class Calculate {
 		String root = "no real roots";
 		
 		if(discriminant(a, b, c)>0) {
-			root = ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a)+ " and ";
-			root += ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a);	
-			
+			root = ((-1*b)+(sqrt(discriminant(a,b,c))))/(2*a)+ " and ";	
+			root += ((-1*b)-(sqrt(discriminant(a,b,c))))/(2*a);
 		}else if(discriminant(a,b,c)==0) {
 			root = ""+(-1*b)/(2*a);
 			
