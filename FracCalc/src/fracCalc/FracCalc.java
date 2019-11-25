@@ -9,6 +9,7 @@ public class FracCalc {
     	String expression = scan.nextLine();
     	System.out.println(produceAnswer(expression));
     }  
+    //takes an expression of fractions and simplifies it
     public static String produceAnswer(String input){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] outputArray = input.split(" ");
@@ -29,13 +30,19 @@ public class FracCalc {
     		answer[2] = val1Ints[2]*val2Ints[2];
     	}
     	if(operator.equals("/")) {
+    		
     		answer[1] = (val1Ints[1]*val2Ints[2]);
     		answer[2] = (val1Ints[2]*val2Ints[1]);
+    		if(answer[2]<0) {
+    			answer[2] = answer[2]*-1;
+    			answer[1] = answer[1]*-1;
+    		}
     	}
     	if(Math.abs(answer[1])>answer[2]) {
     			answer[0] = toMixedNumWhole(answer[1], answer[2]);
     			answer[1] = toMixedNumNum(answer[1], answer[2]);
     	}
+    	
     	int greatestcf = gcf(answer[1], answer[2]);
     	
     	if(answer[0]==0 && answer[1]==0) {
@@ -45,12 +52,15 @@ public class FracCalc {
     	}else if(answer[0]==0 && Math.abs(answer[1])<answer[2] && answer[2] !=1) {	
     		return answer[1]/greatestcf + "/" + answer[2]/greatestcf;
     	}else if(answer[2]==answer[1]) {
-    		return 1 +"";
+    		return 1 +"";	
     	}else {
     		return answer[0] + "";
     	}
     }
     // TODO: Fill in the space below with any helper methods that you think you will need  
+   
+    //initializes the the indexes of the val1 and val2 arrays for produce answers
+    //takes string and returns an array with the whole number, numerator, and denominator
     public static int[] initializing(String input) {
     	int[] value= {0,0,1};
     			
@@ -75,7 +85,9 @@ public class FracCalc {
      	}
     	return value;
     }
-  //is Divisible By
+ 
+    //is Divisible By
+    //sees if a number is divisible by another number
   	public static boolean isDivisibleBy(int num1, int num2) {
   		if(num2==0)throw new IllegalArgumentException("can't divide a number by 0");
   		if(num1%num2 == 0) {
@@ -85,6 +97,7 @@ public class FracCalc {
   		}
   	}
   //max
+  	//finds the max between 2 numbers
   	public static double max(double num1, double num2) {
   		if(num1>num2) {
   			return num1;
@@ -93,6 +106,7 @@ public class FracCalc {
   		}
   	}
   //min
+  	//find the min of 2 numbers
   	public static int min(int num1, int num2) {
   		if(num1<num2) {
   			return num1;
@@ -101,7 +115,9 @@ public class FracCalc {
   		}
   		
   	}
-    public static int gcf(int num1, int num2) {
+  //greatest common factor
+  	//finds greatest common factor between 2 numbers
+  	public static int gcf(int num1, int num2) {
 		int answer = 1;
 		for(int i = 1; i<=(max(num1, num2)); i++) {
 			if(isDivisibleBy((int)max(num1, num2), i)) {
@@ -112,11 +128,13 @@ public class FracCalc {
 		}
 		return answer;
 	}
+  //turns improper frac to mixed and finds the whole number of the mixed number	
     public static int toMixedNumWhole(int num, int denom) {
 		int wholenum = 0;
 		wholenum = num/denom;
 		return(wholenum);
 	}
+   //turns improper frac to mixed and finds the numerator of the mixed number	
     public static int toMixedNumNum(int num, int denom) {
 		int num1 = 0;
 		num1 = num%denom;
