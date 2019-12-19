@@ -1,3 +1,8 @@
+//Marina Wong
+//Dec 6, 2019
+//4th period
+//This code takes fractions and adds, subtracts, multiplies, and divides fractions
+
 package fracCalc;
 import java.util.*;
 public class FracCalc {
